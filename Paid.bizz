@@ -19,7 +19,7 @@ print(f"{Fore.CYAN}{Style.BRIGHT}🪐 NOBITA PAID ACCESS SYSTEM\n")
 ID = input(f"{Fore.YELLOW}Enter your Telegram User ID: {Fore.RESET}").strip()
 
 try:
-    response = requests.get("https://raw.githubusercontent.com/Inder8989/Paid.user/main/P.users")
+    response = requests.get("https://raw.githubusercontent.com/almbrokwork-crypto/Paid_users-/main/P.users")
     response.raise_for_status()
     valid_lines = response.text.splitlines()
 except requests.RequestException:
