@@ -20,7 +20,7 @@ print(f"{Fore.CYAN}{Style.BRIGHT}🪐 NOBITA PAID ACCESS SYSTEM\n")
 ID = input(f"{Fore.YELLOW}Enter your Telegram User ID: {Fore.RESET}").strip()
 
 try:
-    response = requests.get("https://raw.githubusercontent.com/almbrokwork-crypto/Paid-bizz-/main/Paid.bizz")
+    response = requests.get("https://raw.githubusercontent.com/Inder8989/Paid.user/main/P.users")
     response.raise_for_status()
     valid_lines = response.text.splitlines()
 except requests.RequestException:
@@ -110,7 +110,7 @@ import requests
 import sys
 from datetime import datetime
 import webbrowser
-WEB_APP_URL = "https://raw.githubusercontent.com/Inder8989/Paid.user/main/P.users"
+WEB_APP_URL = "https://raw.githubusercontent.com/almbrokwork-crypto/Paid-bizz-/main/Paid.bizz"
 
 user_id = input("ENTER ID :")
 
