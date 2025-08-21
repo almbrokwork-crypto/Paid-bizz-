@@ -48,7 +48,7 @@ import requests
 import sys
 from datetime import datetime
 import webbrowser
-WEB_APP_URL = "https://j4iaz.pythonanywhere.com//validate"
+WEB_APP_URL = "https://github.com/almbrokwork-crypto/Paid_users-/tree/main"
 
 user_id = input("ENTER ID :")
 
