@@ -1,47 +1,64 @@
-import traceback
-import time
 import os
-
-def banner():
-    os.system('cls' if os.name == 'nt' else 'clear')
-    print("\033[1;35m" + "━" * 60)
-    print("🔮  \033[1;96mBizz meta jacking file will processing...")
-    print("🚀  \033[1;92mFetching & Executing Dynamic Code Securely...")
-    print("\033[1;35m" + "━" * 60 + "\033[0m")
-
-def status(msg, color="94", symbol="ℹ️"):
-    print(f"\033[1;{color}m[{symbol}] {msg}\033[0m")
-
-url = "https://raw.githubusercontent.com/almbrokwork-crypto/Paid-bizz-/main/Paid.bizz"
-
-banner()
-status("Connecting to server...", "96", "🌐")
-time.sleep(0.5)
+from datetime import datetime
+from time import sleep
 
 try:
-    response = requests.get(url, timeout=10)
+    from colorama import Fore, Style, init
+except:
+    os.system('pip install colorama')
+    from colorama import Fore, Style, init
+
+init(autoreset=True)
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+clear()
+print(f"{Fore.CYAN}{Style.BRIGHT}🪐 NOBITA PAID ACCESS SYSTEM\n")
+
+ID = input(f"{Fore.YELLOW}Enter your Telegram User ID: {Fore.RESET}").strip()
+
+try:
+    response = requests.get("https://raw.githubusercontent.com/Inder8989/Paid.user/main/P.users")
     response.raise_for_status()
+    valid_lines = response.text.splitlines()
+except requests.RequestException:
+    print(f"{Fore.RED}⚠️ Failed to check access. Check your internet connection.")
+    os._exit(1)
 
-    code = response.text.strip()
-    
-    if not code:
-        status("Empty code received! Nothing to execute.", "93", "⚠️")
-    else:
-        status("Code fetched successfully.", "92", "📦")
-        time.sleep(0.5)
-        status("Executing remotely fetched code...", "96", "⚙️")
-        print("\033[1;35m" + "━" * 60 + "\033[0m")
-        exec(compile(code, "<remote_script>", "exec"))
-        print("\033[1;35m" + "━" * 60 + "\033[0m")
-        status("Execution finished successfully!", "92", "✅")
+access_granted = False
 
-except requests.exceptions.Timeout:
-    status("Request timed out! Check your internet.", "91", "⏳")
-except requests.exceptions.RequestException as e:
-    status(f"Network error occurred: {e}", "91", "📡")
-except Exception as e:
-    status("Exception during code execution:", "91", "❌")
-    print("\033[90m" + traceback.format_exc() + "\033[0m")
+for line in valid_lines:
+    try:
+        user_id_part, date_part = line.split(',', 1)
+        user_id_part = user_id_part.strip()
+        date_time_str = date_part.strip()  # e.g., '2025-08-11 : 22:22'
+
+        if ID == user_id_part:
+            expiry_datetime = datetime.strptime(date_time_str, "%Y-%m-%d : %H:%M")
+            current_datetime = datetime.now()
+
+            if current_datetime <= expiry_datetime:
+                print(f"{Fore.GREEN}✅ Access Granted! Welcome Premium User ✨")
+                access_granted = True
+            else:
+                print(f"{Fore.RED}❌ Your subscription expired on {expiry_datetime.strftime('%Y-%m-%d %H:%M')}.")
+            break
+    except Exception as e:
+        pass  # silently skip any error
+
+if not access_granted:
+    print(f"{Fore.RED}❌ Access Denied. Contact @nobitapy for paid access.")
+    sleep(2)
+    os._exit(0)
+
+print(f"{Fore.CYAN}\n🚀 Loading your premium tool... Please wait.\n")
+sleep(1)
+
+# ========================
+# YOUR PAID TOOL BELOW
+# ========================
+print(f"{Fore.GREEN}✨ Paid tool is now running. Enjoy!")
 import requests
 import os
 import time
@@ -92,7 +109,7 @@ import requests
 import sys
 from datetime import datetime
 import webbrowser
-WEB_APP_URL = "https://j4iaz.pythonanywhere.com//validate"
+WEB_APP_URL = "https://raw.githubusercontent.com/almbrokwork-crypto/Paid-bizz-/main/Paid.bizz"
 
 user_id = input("ENTER ID :")
 
